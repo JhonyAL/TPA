@@ -1,56 +1,40 @@
 cont = 0
+x = 0
+y = 0
+z = 0
+branco = 0
+nulo = 0
+eleitores = []
 
-def quantFunc():
-    quant = int(input("Informe a quantidade de produtos desejados para serem inseriodos: "))
-    if quant < 0:
-        print("O número informado não pode ser negativo!")
-        return quantFunc()
-    else:
-        return quant
+def verifacationEleitor(eleitorU):
+    for eleitor in eleitores:
+        if eleitor == eleitorU:
+            print("Título de eleitor inválido!")
+            return True
+    eleitores.append(eleitorU)    
+    return False
 
-def nameInsert():
-    nameProduct = input("Nome do produto: ")
-    return len(nameProduct)
+while cont < 5:
+    eleitorU = input(
+        "Digite seu titulo de eleitor: "
+    )
+    if not verifacationEleitor(eleitorU):
+        cont += 1
+        if cont > 5:
+            break
+        candidato = input(
+            'Digite o nome do seu candidato: X, Y ou Z.\n'
+            'Para voto em branco, não digite nada, e para voto nulo, digite qualquer coisa diferente dos quatro valores anteriores.\n'
+        ).upper()
+        if candidato == "X":
+            x += 1
+        elif candidato == 'Y':
+            y += 1
+        elif candidato == 'Z':
+            z += 1
+        elif candidato == '':
+            branco += 1
+        else:
+            nulo += 1
 
-def quantInsert():
-    quantProduct = int(input("Quantidade: "))
-    return quantProduct
-
-def valueInsert():
-    valueProduct = float(input("Valor: "))
-    return valueProduct
-
-def validationValue():
-    if valueInsert() > 0:
-        return
-    else:
-        print("O valor inserido deve ser maior que 0!")
-        return validationValue()
-
-def validationQuant():
-    if quantInsert() > 0:
-        validationValue()
-    else:
-        print("A quantidade inserida deve ser maior que 0!")
-        return validationQuant()
-
-def validationName():
-    if nameInsert() > 2:
-        validationQuant()
-    else:
-        print("O nome do produto deve ser superior à 2 caracteres!")
-        return validationName()
-
-def signUpProduct():
-    validationName()
-    menu = (input("\n*************       Menu:       ***************** \n\n Cadastrar um novo produto: Digite c; \n Cadastro de vendedores: Digite v; \n Módulo de vendas: mv \n\n")).upper()
-    if menu == "C":
-        return signUpProduct()
-    elif menu == "V":
-        return signUpSeller()
-    else:
-        return moduleSales()
-
-while cont < quantFunc():
-    cont += 1
-    signUpProduct()
+print("\nQuantidade de votos no candidato X: "+ str(x) +";\nQuantidade de votos no candidato Y: "+ str(y) + ";\nQuantidade de votos no candidato Z: "+ str(z) +";\nQuantidade de votos brancos: "+ str(branco) +";\nQuantidade de votos nulos: "+ str(nulo))
