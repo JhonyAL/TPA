@@ -4,10 +4,14 @@ class Product:
         self.__value = value
         self.__quantity = quantity
 
-    def __init__(self):
-        self.__name = ""
-        self.__value = 0.00
-        self.__quantity = 0
+    def setName(self, name):
+        self.__name = name
+
+    def setValue(self, value):
+        self.__value = value
+
+    def setName(self, quantity):
+        self.__quantity = quantity
 
     def getName(self):
         return self.__name
