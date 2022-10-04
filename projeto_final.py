@@ -48,7 +48,7 @@ def setSellerName():
 
 
 def setWage():
-    wage = float("Salário: R$ ")
+    wage = float(input("Salário: R$ "))
     if wage < 1000:
         print("O salário deve ser superior à R$ 1000,00!")
         return setWage()
@@ -58,19 +58,22 @@ def setWage():
 
 def setComission():
     comission = 0.00
+    return comission
 
 
 # Menu
 def menu():
-    menu = input("\n ************* MENU ************"
+    print("\n ************* MENU ************"
                  "\n\nPara iniciar o cadastro de um novo produto, digite 'add';\n"
                  "Para abrir o cadastro de vendedores, digite 'cdv';\n"
-                 "Para abrir o modulo de vendas, digite 'mdv'.\n\n"
-                 ).upper()
+                 "Para abrir o modulo de vendas, digite 'mdv'."
+                 )
+    menu = input("Digite: ").upper()
     return menu
 
 # Seller sign up start
 def quantitySellerFunction(sellers):
+    print("\nIniciando cadastro de vendedores...\n")
     cont = 0
     quantity = int(
         input("Digite a quantidade de vendedores à serem cadastrados: "))
@@ -102,20 +105,17 @@ def quantityProductFunction(cont, products, sellers):
             valueProduct = setValue()
             quantityProduct = setQuantity()
             prod = Product(nameProduct, valueProduct, quantityProduct)
-            validationProduct = input("\n ***** PRODUTO ******" +
-                        "Nome do produto: " + prod.getName()
-                        + "\nValor do produto: " + prod.getValue()
-                        + "\nQuantidade do produto: " + prod.getQuantity()
-                        + "\nDeseja cadastrar esse produto?[s/n] "
-            ).upper()
-            if validationProduct == "SIM":
+            print("\n ***** PRODUTO ****** \n\nNome: " + prod.getName() + "\nValor: " + str(prod.getValue()) + "\nQuantidade: " + str(prod.getQuantity()))
+            validationProduct = input("\nDeseja cadastrar esse produto?[s/n]").upper()
+            if validationProduct == "S" or validationProduct == "SIM":
                 products.append(prod)
                 cont += 1
                 if cont < quantity:
-                    menu = menu()
-                    if menu == "CDV":
+                    if menu() == "CDV":
                         return quantitySellerFunction(sellers)
                 else:
+                    print("\n******** A QUANTIDADE DE PRODUTOS A SEREM CADASTRADOS FOI PREENCHIDA ******\n")
+                    print("Iniciando cadastro de vendedores...\n")
                     quantitySellerFunction(sellers)
             else:
                 print("Então cadastre outro produto.")
