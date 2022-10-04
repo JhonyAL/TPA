@@ -10,7 +10,7 @@ class Seller:
     def setWage(self, wage):
         self.__wage = wage
 
-    def setName(self, comission):
+    def setComission(self, comission):
         self.__comission = comission
 
     def getName(self):

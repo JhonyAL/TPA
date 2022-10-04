@@ -10,7 +10,7 @@ class Product:
     def setValue(self, value):
         self.__value = value
 
-    def setName(self, quantity):
+    def setQuantity(self, quantity):
         self.__quantity = quantity
 
     def getName(self):
