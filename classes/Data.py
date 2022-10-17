@@ -1,3 +1,7 @@
+from classes.Sale import Sale
+from classes.Product import Product
+from classes.Seller import Seller
+
 class Data:
         # Atributes
         __products: list[Product] = []

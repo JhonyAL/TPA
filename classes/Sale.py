@@ -1,3 +1,6 @@
+from classes.Seller import Seller
+from classes.Seller_Product import Seller_Product
+
 class Sale:
     __module: int
     __sellerProduct: list[Seller_Product] = []

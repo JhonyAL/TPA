@@ -1,3 +1,6 @@
+from classes.Product import Product
+from classes.Seller import Seller
+
 class Seller_Product:
     __product: Product
     __seller: Seller
